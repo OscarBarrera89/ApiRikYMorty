@@ -4,11 +4,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RikYMortyCharactersClient {
+    private const val BASE_URL = "https://rickandmortyapi.com/api/"
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private val retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
-    val service = retrofit.create(RikyMortyCharactersService::class.java)
+    val service: RikyMortyCharactersService by lazy {
+        retrofit.create(RikyMortyCharactersService::class.java)
+    }
 }
