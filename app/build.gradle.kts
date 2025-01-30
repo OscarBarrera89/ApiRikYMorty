@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -8,7 +10,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.oscarbarrera.apitikymorty"
+        applicationId = "com.oscarbarrera.apirikymorty"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -59,20 +61,28 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    implementation(libs.coil)
-    implementation(libs.icon.extended)
-    implementation(libs.navigation.compose)
-    implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.runtime.livedata)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation (libs.converter.gson)
+    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(kotlin("script-runtime"))
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.gson)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v261)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.material3)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v260)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.serialization)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services)
+//    implementation(libs.firebase.analytics)
+
 }

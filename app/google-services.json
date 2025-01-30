@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "934022676339",
+    "project_id": "apirikymorty",
+    "storage_bucket": "apirikymorty.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934022676339:android:2e7ac5903ba21352084f06",
+        "android_client_info": {
+          "package_name": "com.oscarbarrera.apirikymorty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934022676339-ocg22sjjkntoteoa210iashcurgdop8q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oscarbarrera.apirikymorty",
+            "certificate_hash": "5446426788265c2e6ed866eefaf48d761842b7d9"
+          }
+        },
+        {
+          "client_id": "934022676339-os0qccfscgbofmt7lnrpf8bbrheeemdn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4hmka6P31KmH7rlxD3HWQBRmbIytieeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934022676339-os0qccfscgbofmt7lnrpf8bbrheeemdn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
