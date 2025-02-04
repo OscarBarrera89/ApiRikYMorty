@@ -115,7 +115,7 @@ fun CharacterListScreen(auth: AuthManager, viewModel: RickYMortyViewModel = view
                         }
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Cyan),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.LightGray),
                 actions = {
                     IconButton(onClick = {
                         showDialog = true
