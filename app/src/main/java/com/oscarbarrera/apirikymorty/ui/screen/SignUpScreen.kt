@@ -32,8 +32,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.oscarbarrera.apirikymorty.ui.data.AuthManager
-import com.oscarbarrera.apirikymorty.ui.data.AuthRes
+import com.oscarbarrera.apirikymorty.data.AuthManager
+import com.oscarbarrera.apirikymorty.data.AuthRes
 import com.oscarbarrera.apirikymorty.ui.theme.Purple40
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

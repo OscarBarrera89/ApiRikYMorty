@@ -3,7 +3,7 @@ package com.oscarbarrera.apirikymorty
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.oscarbarrera.apirikymorty.ui.data.AuthManager
+import com.oscarbarrera.apirikymorty.data.AuthManager
 import com.oscarbarrera.apirikymorty.ui.navegacion.Navegacion
 import com.oscarbarrera.apirikymorty.ui.theme.ApiRikYMortyTheme
 

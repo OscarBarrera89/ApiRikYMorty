@@ -52,8 +52,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.oscarbarrera.apirikymorty.R
 import com.oscarbarrera.apirikymorty.model.Characters
-import com.oscarbarrera.apirikymorty.model.RickYMortyViewModel
-import com.oscarbarrera.apirikymorty.ui.data.AuthManager
+import com.oscarbarrera.apirikymorty.data.AuthManager
 
 
 // Composable que muestra la lista de personajes

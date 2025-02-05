@@ -1,5 +1,6 @@
-package com.oscarbarrera.apirikymorty.model
+package com.oscarbarrera.apirikymorty.data
 
+import com.oscarbarrera.apirikymorty.model.RikYMortyCharactersResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 

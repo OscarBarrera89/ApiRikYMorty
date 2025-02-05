@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.ui.data
+package com.oscarbarrera.apirikymorty.data
 
 import android.content.Context
 import android.content.Intent

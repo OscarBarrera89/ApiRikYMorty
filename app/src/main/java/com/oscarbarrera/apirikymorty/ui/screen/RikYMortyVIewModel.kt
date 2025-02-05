@@ -1,11 +1,11 @@
-package com.oscarbarrera.apirikymorty.model
+package com.oscarbarrera.apirikymorty.ui.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import com.oscarbarrera.apirikymorty.model.RikYMortyCharactersClient
+import com.oscarbarrera.apirikymorty.data.RikYMortyCharactersClient
 import com.oscarbarrera.apirikymorty.model.Characters
 
 class RickYMortyViewModel : ViewModel() {

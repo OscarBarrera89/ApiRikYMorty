@@ -46,8 +46,8 @@ import androidx.compose.ui.unit.sp
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.GoogleAuthProvider
 import com.oscarbarrera.apirikymorty.R
-import com.oscarbarrera.apirikymorty.ui.data.AuthManager
-import com.oscarbarrera.apirikymorty.ui.data.AuthRes
+import com.oscarbarrera.apirikymorty.data.AuthManager
+import com.oscarbarrera.apirikymorty.data.AuthRes
 import com.oscarbarrera.apirikymorty.ui.theme.Purple40
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -119,13 +119,13 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_firebase),
-                contentDescription = "Firebase",
+                painter = painterResource(id = R.drawable.androide),
+                contentDescription = "iconoAndroid",
                 modifier = Modifier.size(100.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                text = "Firebase Android",
+                text = "ApiRikYMorty",
                 style = TextStyle(fontSize = 30.sp)
             )
             Spacer(modifier = Modifier.height(30.dp))
