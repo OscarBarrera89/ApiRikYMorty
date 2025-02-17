@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.data
+package com.oscarbarrera.apirikymorty.model
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

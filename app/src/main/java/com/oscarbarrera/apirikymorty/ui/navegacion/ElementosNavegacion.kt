@@ -9,9 +9,6 @@ object Login
 object SignUp
 
 @Serializable
-object Home
-
-@Serializable
 object ForgotPassword
 
 @Serializable
@@ -19,3 +16,9 @@ object ListaPersonajes
 
 @Serializable
 object DetallePersonajes
+
+@Serializable
+object CrudPersonajes
+
+@Serializable
+object DetPersonajes

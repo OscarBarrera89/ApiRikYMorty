@@ -7,16 +7,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.oscarbarrera.apirikymorty.data.AuthManager
+import com.oscarbarrera.apirikymorty.data.FirestoreManager
 import com.oscarbarrera.apirikymorty.ui.screen.CharacterListScreen
 import com.oscarbarrera.apirikymorty.ui.screen.CharacterScreen
 import com.oscarbarrera.apirikymorty.ui.screen.ForgotPasswordScreen
 import com.oscarbarrera.apirikymorty.ui.screen.LoginScreen
+import com.oscarbarrera.apirikymorty.ui.screen.ScreenPrincipal
 import com.pjurado.firebasecurso2425.screen.SignUpScreen
 
 @Composable
 fun Navegacion(auth: AuthManager) {
     val navController = rememberNavController()
     val context = LocalContext.current
+    val firestore = FirestoreManager(auth, context)
 
 
     NavHost(navController = navController, startDestination = Login) {
@@ -25,7 +28,7 @@ fun Navegacion(auth: AuthManager) {
                 auth,
                 { navController.navigate(SignUp) },
                 {
-                    navController.navigate(ListaPersonajes) {
+                    navController.navigate(CrudPersonajes) {
                         popUpTo(Login) { inclusive = true }
                     }
                 },
@@ -46,7 +49,16 @@ fun Navegacion(auth: AuthManager) {
                 popUpTo(Login){ inclusive = true }
             } }
         }
-        composable<ListaPersonajes>{
+        composable<CrudPersonajes>{
+            ScreenPrincipal(
+                auth,
+                firestore,
+                { navController.navigate(Login) {
+                    popUpTo(Login){ inclusive = true }
+                } }
+            ) { }
+        }
+        /*composable<ListaPersonajes>{
             CharacterListScreen(
                 auth,
                 viewModel(),
@@ -65,6 +77,6 @@ fun Navegacion(auth: AuthManager) {
                 viewModel(),
                 { navController.navigate(ListaPersonajes) }
             )
-        }
+        }*/
     }
 }

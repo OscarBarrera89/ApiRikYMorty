@@ -173,17 +173,11 @@ fun CharacterItem(character: Characters, navigateToPersonaje: () -> Unit) {
 
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
-            AsyncImage(
-                model = character.image,
-                contentDescription = character.name,
-                modifier = Modifier.size(64.dp)
-            )
             Spacer(modifier = Modifier.width(16.dp))
             Column {
                 Text(text = character.name, style = MaterialTheme.typography.titleLarge)
                 Text(text = "Species: ${character.species}", style = MaterialTheme.typography.bodySmall)
                 Text(text = "Status: ${character.status}", style = MaterialTheme.typography.bodySmall)
-                Text(text = "Location: ${character.location.name ?: "Unknown"}", style = MaterialTheme.typography.bodySmall)
             }
         }
     }

@@ -83,6 +83,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services)
-//    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.firestore.ktx)
+
 
 }

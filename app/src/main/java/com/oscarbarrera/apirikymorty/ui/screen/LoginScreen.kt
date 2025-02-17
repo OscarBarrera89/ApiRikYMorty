@@ -119,7 +119,7 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.androide),
+                painter = painterResource(id = R.drawable.ricksanchez),
                 contentDescription = "iconoAndroid",
                 modifier = Modifier.size(100.dp)
             )
