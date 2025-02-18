@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.ui.screen
+package com.oscarbarrera.apirikymorty.ui.screen.screenFirebase
 
 import android.content.Context
 import android.widget.Toast

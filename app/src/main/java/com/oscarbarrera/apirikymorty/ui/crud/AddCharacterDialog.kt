@@ -1,8 +1,9 @@
-package com.oscarbarrera.apirikymorty.crud
+package com.oscarbarrera.apirikymorty.ui.crud
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -25,21 +26,24 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.oscarbarrera.apirikymorty.data.AuthManager
 import com.oscarbarrera.apirikymorty.model.Characters
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UpdateCharacterDialog(
-    personaje: Characters,
-    onCharacterUpdated: (Characters) -> Unit,
-    onDialogDismissed: () -> Unit
+fun AddCharacterDialog(
+    onCharacterAdded: (Characters) -> Unit,
+    onDialogDismissed: () -> Unit,
+    auth: AuthManager
 ) {
-    var name by remember { mutableStateOf(personaje.name) }
-    var oficio by remember { mutableStateOf(personaje.oficio) }
-    var gender by remember { mutableStateOf(personaje.gender) }
-    var species by remember { mutableStateOf(personaje.species) }
-    var status by remember { mutableStateOf(personaje.status) }
-    var age by remember { mutableIntStateOf(personaje.age!!) }
+
+    var name by remember { mutableStateOf("") }
+    var oficio by remember { mutableStateOf("") }
+    var gender by remember { mutableStateOf("") }
+    var species by remember { mutableStateOf("") }
+    var status by remember { mutableStateOf("") }
+    var age by remember { mutableIntStateOf(0) }
 
     val estadoPersonaje = listOf(
         "Vivo", "Muerto", "En Busca y Captura", "Revivido", "Desconocido"
@@ -53,14 +57,13 @@ fun UpdateCharacterDialog(
     var expandedEstado by remember { mutableStateOf(false) }
 
     AlertDialog(
-        title = { Text(text = "Actualizar personaje") },
-        onDismissRequest = {onDialogDismissed()},
+        title = { Text("Añadir personaje") },
+        onDismissRequest = { onDialogDismissed() },
         confirmButton = {
             Button(
                 onClick = {
                     val newPersonaje = Characters(
-                        id = personaje.id,
-                        userId = personaje.userId,
+                        userId = auth.getCurrentUser()?.uid,
                         name = name,
                         oficio = oficio,
                         gender = gender,
@@ -68,7 +71,7 @@ fun UpdateCharacterDialog(
                         status = status,
                         age = age
                     )
-                    onCharacterUpdated(newPersonaje)
+                    onCharacterAdded(newPersonaje)
                     name = ""
                     oficio = ""
                     gender = ""
@@ -77,50 +80,50 @@ fun UpdateCharacterDialog(
                     age = 0
                 }
             ) {
-                Text(text = "Actualizar")
+                Text("Añadir")
             }
         },
         dismissButton = {
             Button(
                 onClick = { onDialogDismissed() }
             ) {
-                Text(text = "Cancelar")
+                Text("Cancelar")
             }
         },
         text = {
-            Column() {
+            Column {
+                Spacer(modifier = Modifier.height(10.dp))
                 TextField(
-                    value = name ?: "",
+                    value = name,
                     onValueChange = { name = it },
                     label = { Text("Nombre") }
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-                // Selector de Especies
+
+                // Dropdown Especies
                 ExposedDropdownMenuBox(
                     expanded = expandedEspecie,
                     onExpandedChange = { expandedEspecie = it }
                 ) {
                     TextField(
                         value = species,
-                        onValueChange = {species = it},
-                        label = { Text("Especies") },
+                        onValueChange = {},
+                        label = { Text("Especie") },
                         readOnly = true,
                         trailingIcon = {
                             Icon(
                                 imageVector = if (expandedEspecie) Icons.Filled.KeyboardArrowUp else Icons.Filled.ArrowDropDown,
                                 contentDescription = "Desplegar lista"
                             )
-                        },
-                        modifier = Modifier.menuAnchor() // Necesario al 100% porque si no no funciona el dorpdown
+                        },modifier = Modifier.menuAnchor() // Necesario al 100% porque si no no funciona el dorpdown
                     )
                     DropdownMenu(
                         expanded = expandedEspecie,
-                        onDismissRequest = { expandedEspecie = false },
-                        modifier = Modifier.height(250.dp)
+                        onDismissRequest = { expandedEspecie = false }
                     ) {
                         especiesPersonaje.forEach { especie ->
                             DropdownMenuItem(
-                                text = { Text(especie) },
+                                text = { Text(especie, fontSize = 14.sp) },
                                 onClick = {
                                     species = especie
                                     expandedEspecie = false
@@ -129,14 +132,15 @@ fun UpdateCharacterDialog(
                         }
                     }
                 }
-                // Selector de Estados
+
+                // Dropdown Estados
                 ExposedDropdownMenuBox(
                     expanded = expandedEstado,
                     onExpandedChange = { expandedEstado = it }
                 ) {
                     TextField(
                         value = status,
-                        onValueChange = {status = it},
+                        onValueChange = {},
                         label = { Text("Estado") },
                         readOnly = true,
                         trailingIcon = {
@@ -149,22 +153,19 @@ fun UpdateCharacterDialog(
                     )
                     DropdownMenu(
                         expanded = expandedEstado,
-                        onDismissRequest = { expandedEstado = false },
-                        modifier = Modifier.height(250.dp)
+                        onDismissRequest = { expandedEstado = false }
                     ) {
                         estadoPersonaje.forEach { estado ->
                             DropdownMenuItem(
-                                text = { Text(estado) },
+                                text = { Text(estado, fontSize = 14.sp) },
                                 onClick = {
                                     status = estado
-                                    expandedEstado = false
+                                    expandedEstado  = false
                                 }
                             )
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-
 
                 Spacer(modifier = Modifier.height(10.dp))
                 TextField(
@@ -196,7 +197,12 @@ fun UpdateCharacterDialog(
                         KeyboardType.Text
                     )
                 )
+
             }
+
+
         }
+
     )
+
 }

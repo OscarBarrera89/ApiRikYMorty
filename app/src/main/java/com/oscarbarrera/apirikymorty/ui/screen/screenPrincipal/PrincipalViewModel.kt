@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.ui.screen
+package com.oscarbarrera.apirikymorty.ui.screen.screenPrincipal
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

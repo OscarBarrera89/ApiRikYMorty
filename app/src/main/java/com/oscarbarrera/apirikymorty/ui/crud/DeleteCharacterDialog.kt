@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.crud
+package com.oscarbarrera.apirikymorty.ui.crud
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button

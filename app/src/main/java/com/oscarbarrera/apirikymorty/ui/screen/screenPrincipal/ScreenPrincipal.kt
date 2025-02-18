@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.ui.screen
+package com.oscarbarrera.apirikymorty.ui.screen.screenPrincipal
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -57,9 +57,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.oscarbarrera.apirikymorty.R
-import com.oscarbarrera.apirikymorty.crud.AddCharacterDialog
-import com.oscarbarrera.apirikymorty.crud.DeleteCharacterDialog
-import com.oscarbarrera.apirikymorty.crud.UpdateCharacterDialog
+import com.oscarbarrera.apirikymorty.ui.crud.AddCharacterDialog
+import com.oscarbarrera.apirikymorty.ui.crud.DeleteCharacterDialog
+import com.oscarbarrera.apirikymorty.ui.crud.UpdateCharacterDialog
 import com.oscarbarrera.apirikymorty.data.AuthManager
 import com.oscarbarrera.apirikymorty.data.FirestoreManager
 import com.oscarbarrera.apirikymorty.model.Characters

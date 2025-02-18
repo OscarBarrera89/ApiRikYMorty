@@ -1,4 +1,4 @@
-package com.oscarbarrera.apirikymorty.ui.screen
+package com.oscarbarrera.apirikymorty.ui.screen.screenApi
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
