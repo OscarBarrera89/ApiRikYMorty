@@ -5,8 +5,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.oscarbarrera.apirikymorty.data.AuthManager
 import com.oscarbarrera.apirikymorty.data.FirestoreManager
+import com.oscarbarrera.apirikymorty.ui.screen.screenDetalle.ScreenPlanetas
 import com.oscarbarrera.apirikymorty.ui.screen.screenFirebase.ForgotPasswordScreen
 import com.oscarbarrera.apirikymorty.ui.screen.screenFirebase.LoginScreen
 import com.oscarbarrera.apirikymorty.ui.screen.screenPrincipal.ScreenPrincipal
@@ -52,9 +54,35 @@ fun Navegacion(auth: AuthManager) {
                 firestore,
                 { navController.navigate(Login) {
                     popUpTo(Login){ inclusive = true }
-                } }
-            ) { }
+                }
+                },
+                { id ->
+                    navController.navigate(DetPersonajes(id))
+                }
+            )
         }
+
+        composable<DetPersonajes>{backStackEntry ->
+            val detalle = backStackEntry.toRoute<DetPersonajes>()
+            val id = detalle.id
+
+            ScreenPlanetas(
+                id,
+                auth,
+                firestore,
+                { navController.navigate(Login) {
+                    popUpTo(Login){ inclusive = true }
+                }
+                },
+                { navController.navigate(CrudPersonajes) {
+                    popUpTo(CrudPersonajes){ inclusive = true }
+                }
+                }
+            )
+        }
+
+        //Parte de mostrar personajes de rik y morty de la api
+        //Se puede borrar pero lo conservo
         /*composable<ListaPersonajes>{
             CharacterListScreen(
                 auth,

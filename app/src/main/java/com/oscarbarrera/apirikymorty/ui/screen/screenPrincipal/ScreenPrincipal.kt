@@ -180,14 +180,14 @@ fun ScreenPrincipal(
                     onCharacterAdded = { personaje ->
                         principalViewModel.addCharacter(
                             Characters(
-                                id = "",
+                                id = null,
                                 userId = auth.getCurrentUser()?.uid,
-                                personaje.oficio ?: "",
-                                personaje.gender ?: "",
-                                personaje.name ?: "",
-                                personaje.age ?: 0,
-                                personaje.species ?: "",
-                                personaje.status ?: "",
+                                personaje.oficio,
+                                personaje.gender,
+                                personaje.name,
+                                personaje.age,
+                                personaje.species,
+                                personaje.status,
                             )
 
                         )
@@ -278,7 +278,7 @@ fun CharacterItem(
                 Text(text = "Estado: ${personaje.status}", style = MaterialTheme.typography.bodySmall)
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             // Función para determinar el color de la barra según el valor, dependiendo de la edad va a mejor o peor
             fun getStatColor(value: Int): Color {

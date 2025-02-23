@@ -21,4 +21,4 @@ object DetallePersonajes
 object CrudPersonajes
 
 @Serializable
-object DetPersonajes
+data class DetPersonajes(val id: String)

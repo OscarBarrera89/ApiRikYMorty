@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.oscarbarrera.apirikymorty.data.FirestoreManager
 import com.oscarbarrera.apirikymorty.model.Characters
+import com.oscarbarrera.apirikymorty.model.PlanetaProcedencia
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -32,58 +33,58 @@ class PrincipalViewModel(val firestoreManager: FirestoreManager) : ViewModel() {
         }
     }
 
-    fun addCharacter(personaje: Characters) {
-        viewModelScope.launch {
-            firestoreManager.addCharacter(personaje)
+        fun addCharacter(personaje: Characters) {
+            viewModelScope.launch {
+                firestoreManager.addCharacter(personaje)
+            }
+        }
+
+        fun deleteCharacterById(characterId: String) {
+            if (characterId.isEmpty()) return
+            viewModelScope.launch {
+                firestoreManager.deleteCharacterById(characterId)
+            }
+        }
+
+        fun updateCharacter(characterNew: Characters) {
+            viewModelScope.launch {
+                firestoreManager.updateCharacter(characterNew)
+            }
+        }
+
+        fun getPersonajeById(personajeId: String) {
+            viewModelScope.launch {
+                _personaje.value = firestoreManager.getCharacterById(personajeId)
+            }
+        }
+
+        fun onAddCharacterSelected() {
+            _uiState.update { it.copy(showAddCharacterDialog = true) }
+        }
+
+        fun dismisShowAddCharacterDialog() {
+            _uiState.update { it.copy(showAddCharacterDialog = false) }
+        }
+
+        fun onLogoutSelected() {
+            _uiState.update { it.copy(showLogoutDialog = true) }
+        }
+
+        fun dismisShowLogoutDialog() {
+            _uiState.update { it.copy(showLogoutDialog = false) }
         }
     }
 
-    fun deleteCharacterById(characterId: String) {
-        if (characterId.isEmpty()) return
-        viewModelScope.launch {
-            firestoreManager.deleteCharacterById(characterId)
+    data class UiState(
+        val personajes: List<Characters> = emptyList(),
+        val isLoading: Boolean = false,
+        val showAddCharacterDialog: Boolean = false,
+        val showLogoutDialog: Boolean = false
+    )
+
+    class PrincipalViewModelFactory(private val firestoreManager: FirestoreManager) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return PrincipalViewModel(firestoreManager) as T
         }
     }
-
-    fun updateCharacter(characterNew: Characters) {
-        viewModelScope.launch {
-            firestoreManager.updateCharacter(characterNew)
-        }
-    }
-
-    fun getCharacterById(characterId: String) {
-        viewModelScope.launch {
-            _personaje.value = firestoreManager.getCharacterById(characterId)
-        }
-    }
-
-    fun onAddCharacterSelected() {
-        _uiState.update { it.copy(showAddCharacterDialog = true) }
-    }
-
-    fun dismisShowAddCharacterDialog() {
-        _uiState.update { it.copy(showAddCharacterDialog = false) }
-    }
-
-    fun onLogoutSelected() {
-        _uiState.update { it.copy(showLogoutDialog = true) }
-    }
-
-    fun dismisShowLogoutDialog() {
-        _uiState.update { it.copy(showLogoutDialog = false) }
-    }
-}
-
-data class UiState(
-    val personajes: List<Characters> = emptyList(),
-    val isLoading: Boolean = false,
-    val showAddCharacterDialog: Boolean = false,
-    val showLogoutDialog: Boolean = false
-)
-
-class PrincipalViewModelFactory(private val firestoreManager: FirestoreManager) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return PrincipalViewModel(firestoreManager) as T
-    }
-}
