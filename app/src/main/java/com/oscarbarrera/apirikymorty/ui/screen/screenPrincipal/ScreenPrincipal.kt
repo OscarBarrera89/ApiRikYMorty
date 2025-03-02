@@ -180,7 +180,7 @@ fun ScreenPrincipal(
                     onCharacterAdded = { personaje ->
                         principalViewModel.addCharacter(
                             Characters(
-                                id = null,
+                                id = "",
                                 userId = auth.getCurrentUser()?.uid,
                                 personaje.oficio,
                                 personaje.gender,
