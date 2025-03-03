@@ -162,7 +162,7 @@ fun ScreenPrincipal(
             Column(modifier = Modifier.padding(8.dp)) {
                 Text("Lista de personajes",  style = TextStyle(fontSize = 24.sp))
             }
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             if (uiState.showLogoutDialog) {
                 LogoutDialogP(
@@ -276,6 +276,8 @@ fun CharacterItem(
                 Text(text = "Especie: ${personaje.species}", style = MaterialTheme.typography.bodySmall)
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(text = "Estado: ${personaje.status}", style = MaterialTheme.typography.bodySmall)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text("Hacer click en el card para ver los planetas del personaje",  style = MaterialTheme.typography.bodySmall)
             }
 
             Spacer(modifier = Modifier.height(4.dp))
